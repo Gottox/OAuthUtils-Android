@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:id="@+id/RelativeLayout01"
+	android:layout_width="fill_parent" android:layout_height="fill_parent"
+	xmlns:android="http://schemas.android.com/apk/res/android">
+
+
+	<TextView android:layout_height="wrap_content" android:text="@string/LoginTitle"
+		android:layout_alignParentRight="true" android:layout_alignParentLeft="true"
+		android:id="@+id/title" android:layout_alignParentTop="true"
+		android:layout_width="wrap_content" android:gravity="center"
+		android:textSize="20sp"></TextView>
+	<ProgressBar android:layout_alignParentRight="true" android:layout_below="@+id/title"
+		style="?android:attr/progressBarStyleHorizontal"
+		android:layout_alignParentLeft="true" android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:id="@+id/progress" android:indeterminate="true" android:max="100" android:layout_margin="20sp"/>
+	<LinearLayout android:layout_below="@+id/progress"
+		android:layout_alignParentRight="true"
+		android:layout_alignParentBottom="true"
+		android:layout_alignParentLeft="true" android:layout_width="wrap_content"
+		android:id="@+id/statusLayout"
+		android:layout_height="wrap_content"
+		android:gravity="center" android:visibility="invisible"
+		android:textSize="20sp" android:orientation="vertical" android:padding="20sp">
+		<LinearLayout android:id="@+id/LinearLayout01"
+			android:gravity="center" android:layout_height="wrap_content"
+			android:layout_width="wrap_content">
+			<ProgressBar android:id="@+id/spinner"
+				android:layout_width="wrap_content" android:layout_height="wrap_content"
+				android:indeterminate="true" />
+			<TextView android:text="" android:layout_width="wrap_content"
+				android:layout_height="wrap_content" android:id="@+id/status"
+				android:textSize="20sp" android:layout_margin="20sp"></TextView>
+		</LinearLayout>
+		<Button android:layout_height="wrap_content" android:id="@+id/finish"
+			android:visibility="gone" android:layout_width="wrap_content"
+			android:padding="10sp" android:textSize="20sp" android:minWidth="200sp"
+			android:layout_margin="20sp"></Button>
+	</LinearLayout>
+	<WebView android:layout_height="wrap_content"
+		android:layout_alignParentRight="true"
+		android:layout_alignParentBottom="true"
+		android:layout_alignParentLeft="true" android:layout_width="wrap_content"
+		android:id="@+id/web" android:layout_below="@+id/progress"
+		android:visibility="invisible" />
+
+
+
+</RelativeLayout>

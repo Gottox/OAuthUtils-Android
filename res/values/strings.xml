@@ -1,0 +1,11 @@
+<resources>
+<string name="app_name">OAuth</string>
+<string name="LoginTitle">Login to Twitter</string>
+<string name="oauth_gettoken">Getting Auth Token</string>
+<string name="oauth_loadlogin">Loading Login</string>
+<string name="oauth_loadresult">logging in</string>
+<string name="oauth_error">An error has occured</string>
+<string name="oauth_success">Successfull</string>
+<string name="oauth_dismiss">Dismiss</string>
+<string name="oauth_finish">Finish</string>
+</resources>
