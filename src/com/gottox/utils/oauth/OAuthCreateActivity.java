@@ -64,7 +64,7 @@ public class OAuthCreateActivity extends Activity {
 	private CharSequence accessUrl;
 	private CharSequence authUrl;
 	private CharSequence reqUrl;
-	private Handler handler;
+	private Handler handler = new Handler();
 
 	private ProgressBar progress;
 	private TextView status;
@@ -146,7 +146,6 @@ public class OAuthCreateActivity extends Activity {
 			web.getSettings().setSavePassword(false);
 			progress = (ProgressBar) this.findViewById(R.id.progress);
 			progress.setIndeterminate(false);
-			handler = new Handler();
 
 			consumerKey = i.getStringExtra(OAuth.OAUTH_CONSUMER_KEY);
 			consumerSecret = i.getStringExtra(OAuth.OAUTH_VERIFIER);
@@ -163,6 +162,7 @@ public class OAuthCreateActivity extends Activity {
 			requestThread.start();
 	}
 
+	// TODO replace by AsyncTask
 	private Thread requestThread = new Thread("OAuth Consume/provider getter") {
 		@Override
 		public void run() {
