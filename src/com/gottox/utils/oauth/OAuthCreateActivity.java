@@ -135,6 +135,7 @@ public class OAuthCreateActivity extends Activity {
 			status = (TextView) this.findViewById(R.id.status);
 			finish = (Button) this.findViewById(R.id.finish);
 			finish.setOnClickListener(new OnClickListener() {
+				@Override
 				public void onClick(View v) {
 					OAuthCreateActivity.this.finish();
 				}
@@ -214,6 +215,7 @@ public class OAuthCreateActivity extends Activity {
 		setResult(Activity.RESULT_OK, intent);
 	}
 
+	@Override
 	public void finish() {
 		CookieManager cm = CookieManager.getInstance();
 		cm.removeAllCookie();
@@ -279,11 +281,13 @@ public class OAuthCreateActivity extends Activity {
 		this.state = state;
 	}
 
+	@Override
 	protected void onSaveInstanceState(Bundle bundle) {
 		super.onSaveInstanceState(bundle);
 		bundle.putSerializable("state", state);
 	}
 
+	@Override
 	protected void onRestoreInstanceState(Bundle bundle) {
 		super.onRestoreInstanceState(bundle);
 		if (bundle != null)
