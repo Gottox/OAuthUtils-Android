@@ -21,6 +21,13 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 
 public class OAuthCreateActivity extends Activity {
+	public final static String OAUTH_CONSUMER_KEY = "OAUTH_CONSUMER_KEY";
+	public final static String OAUTH_SECRET_KEY = "OAUTH_SECRET_KEY";
+	public final static String OAUTH_ACCESS_URL = "OAUTH_ACCESS_URL";
+	public final static String OAUTH_REQUEST_URL = "OAUTH_REQUEST_URL";
+	public final static String OAUTH_TOKEN = "OAUTH_TOKEN";
+	public final static String OAUTH_TOKEN_SECRET = "OAUTH_TOKEN_SECRET";
+	public static final String OAUTH_AUTH_URL = "OAUTH_AUTH_URL";
 	enum State {
 		INIT, GETTOKEN, LOADLOGIN, ENTERUSER, LOADRESULT, RESULTLOADED, ERROR, SUCCESS
 	};
@@ -85,11 +92,11 @@ public class OAuthCreateActivity extends Activity {
 			CharSequence secret, int id) {
 		Intent intent = new Intent(context.getBaseContext(),
 				OAuthCreateActivity.class);
-		intent.putExtra(OAuth.OAUTH_CONSUMER_KEY, key);
-		intent.putExtra(OAuth.OAUTH_VERIFIER, secret);
-		intent.putExtra("accessUrl", accessUrl);
-		intent.putExtra("authUrl", authUrl);
-		intent.putExtra("reqUrl", reqUrl);
+		intent.putExtra(OAUTH_CONSUMER_KEY, key);
+		intent.putExtra(OAUTH_SECRET_KEY, secret);
+		intent.putExtra(OAUTH_ACCESS_URL, accessUrl);
+		intent.putExtra(OAUTH_AUTH_URL, authUrl);
+		intent.putExtra(OAUTH_REQUEST_URL, reqUrl);
 		context.startActivityForResult(intent, id);
 	}
 
@@ -148,11 +155,11 @@ public class OAuthCreateActivity extends Activity {
 			progress = (ProgressBar) this.findViewById(R.id.progress);
 			progress.setIndeterminate(false);
 
-			consumerKey = i.getStringExtra(OAuth.OAUTH_CONSUMER_KEY);
-			consumerSecret = i.getStringExtra(OAuth.OAUTH_VERIFIER);
-			accessUrl = i.getStringExtra("accessUrl");
-			authUrl = i.getStringExtra("authUrl");
-			reqUrl = i.getStringExtra("reqUrl");
+			consumerKey = i.getStringExtra(OAUTH_CONSUMER_KEY);
+			consumerSecret = i.getStringExtra(OAUTH_SECRET_KEY);
+			accessUrl = i.getStringExtra(OAUTH_ACCESS_URL);
+			authUrl = i.getStringExtra(OAUTH_AUTH_URL);
+			reqUrl = i.getStringExtra(OAUTH_REQUEST_URL);
 			startAuth();
 		}
 	}
@@ -179,7 +186,7 @@ public class OAuthCreateActivity extends Activity {
 						CALLBACK_URI));
 				handler.post(requestFinished);
 			} catch (Exception e) {
-				Log.e("Twiii", "Cannot retrieve RequestToken", e);
+				Log.e("OAuth", "Cannot retrieve RequestToken", e);
 				error("Cannot retrieve RequestToken");
 			}
 		}
@@ -205,13 +212,13 @@ public class OAuthCreateActivity extends Activity {
 		String token = consumer.getToken();
 		String tokenSecret = consumer.getTokenSecret();
 		Intent intent = new Intent();
-		intent.putExtra(OAuth.OAUTH_CONSUMER_KEY, consumerKey);
-		intent.putExtra(OAuth.OAUTH_VERIFIER, consumerSecret);
-		intent.putExtra(OAuth.OAUTH_TOKEN, token);
-		intent.putExtra(OAuth.OAUTH_TOKEN_SECRET, tokenSecret);
-		intent.putExtra("accessUrl", accessUrl);
-		intent.putExtra("authUrl", authUrl);
-		intent.putExtra("reqUrl", reqUrl);
+		intent.putExtra(OAUTH_CONSUMER_KEY, consumerKey);
+		intent.putExtra(OAUTH_SECRET_KEY, consumerSecret);
+		intent.putExtra(OAUTH_TOKEN, token);
+		intent.putExtra(OAUTH_TOKEN_SECRET, tokenSecret);
+		intent.putExtra(OAUTH_ACCESS_URL, accessUrl);
+		intent.putExtra(OAUTH_AUTH_URL, authUrl);
+		intent.putExtra(OAUTH_REQUEST_URL, reqUrl);
 		setResult(Activity.RESULT_OK, intent);
 	}
 
